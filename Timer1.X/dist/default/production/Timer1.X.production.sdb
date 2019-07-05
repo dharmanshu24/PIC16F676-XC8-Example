@@ -1,0 +1,77 @@
+[p LITE_MODE AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F676 ]
+[d frameptr 6 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"15 E:\Pic Projects\PIC16F676-XC8-Example\Timer1.X\timer1.c
+[v _IOinit IOinit `(v  1 e 1 0 ]
+"22
+[v _timer1Init timer1Init `(v  1 e 1 0 ]
+"37
+[v _main main `(v  1 e 1 0 ]
+"44
+[v _ISR ISR `II(v  1 e 1 0 ]
+"166 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+"216
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"419
+[v _TMR1L TMR1L `VEuc  1 e 1 @14 ]
+"426
+[v _TMR1H TMR1H `VEuc  1 e 1 @15 ]
+"731
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"781
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"1534
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"1576
+[v _PEIE PEIE `VEb  1 e 0 @94 ]
+"1591
+[v _RA0 RA0 `VEb  1 e 0 @40 ]
+"1654
+[v _T1CKPS0 T1CKPS0 `VEb  1 e 0 @132 ]
+"1657
+[v _T1CKPS1 T1CKPS1 `VEb  1 e 0 @133 ]
+"1666
+[v _T1OSCEN T1OSCEN `VEb  1 e 0 @131 ]
+"1675
+[v _TMR1CS TMR1CS `VEb  1 e 0 @129 ]
+"1678
+[v _TMR1GE TMR1GE `VEb  1 e 0 @134 ]
+"1681
+[v _TMR1IE TMR1IE `VEb  1 e 0 @1120 ]
+"1684
+[v _TMR1IF TMR1IF `VEb  1 e 0 @96 ]
+"1687
+[v _TMR1ON TMR1ON `VEb  1 e 0 @128 ]
+"13 E:\Pic Projects\PIC16F676-XC8-Example\Timer1.X\timer1.c
+[v _i i `uc  1 e 1 0 ]
+"37
+[v _main main `(v  1 e 1 0 ]
+{
+"42
+} 0
+"22
+[v _timer1Init timer1Init `(v  1 e 1 0 ]
+{
+"35
+} 0
+"15
+[v _IOinit IOinit `(v  1 e 1 0 ]
+{
+"20
+} 0
+"44
+[v _ISR ISR `II(v  1 e 1 0 ]
+{
+"52
+} 0

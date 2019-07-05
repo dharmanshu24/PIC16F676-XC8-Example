@@ -1,0 +1,987 @@
+
+
+Microchip Technology PIC LITE Macro Assembler V2.00 build -1524193055 
+                                                                                               Fri Jul 05 17:26:02 2019
+
+Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 20180527130849
+     1  0000                     
+      + 0000                     
+     2                           ; Version 2.00
+     3                           ; Generated 27/05/2018 GMT
+     4                           
+     5                           ; 
+     6                           ; Copyright © 2018, Microchip Technology Inc. and its subsidiaries ("Microchip")
+     7                           ; All rights reserved.
+     8                           ; 
+     9                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+                                 ip").
+    10                           ; 
+    11                           ; Redistribution and use in source and binary forms, with or without modification, are
+    12                           ; permitted provided that the following conditions are met:
+    13                           ; 
+    14                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+                                 t of
+    15                           ;        conditions and the following disclaimer.
+    16                           ; 
+    17                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+                                 list
+    18                           ;        of conditions and the following disclaimer in the documentation and/or other
+    19                           ;        materials provided with the distribution.
+    20                           ; 
+    21                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+                                 is
+    22                           ;        software without specific prior written permission.
+    23                           ; 
+    24                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+
+    25                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+                                 OR
+    26                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+                                 T,
+    27                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+                                 
+    28                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+                                 
+    29                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+                                 RICT
+    30                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+                                 SE OF
+    31                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    32                           ; 
+    33                           
+    34                           
+    35                           ; 
+    36                           ; Code-generator required, PIC16F676 Definitions
+    37                           ; 
+    38  0004                     fsr0 equ 04h
+    39  0004                     indf equ 00h
+    40  0000                     indf0 equ 00h
+    41  0000                     pc equ 02h
+    42  0002                     pcl equ 02h
+    43  0002                     pclath equ 0Ah
+    44  000A                     status equ 03h
+    45  0003                     
+     2                           opt pagewidth 120
+     3  0000                     byte0	macro	val
+     4                           	(getbyte(val,0))
+     5                           endm
+     6  0000                     byte1	macro	val
+     7                           	(getbyte(val,1))
+     8                           endm
+     9  0000                     byte2	macro	val
+    10                           	(getbyte(val,2))
+    11                           endm
+    12  0000                     byte3	macro	val
+    13                           	(getbyte(val,3))
+    14                           endm
+    15  0000                     byte4	macro	val
+    16                           	(getbyte(val,4))
+    17                           endm
+    18  0000                     byte5	macro	val
+    19                           	(getbyte(val,5))
+    20                           endm
+    21  0000                     byte6	macro	val
+    22                           	(getbyte(val,6))
+    23                           endm
+    24  0000                     byte7	macro	val
+    25                           	(getbyte(val,7))
+    26                           endm
+    27  0000                     getword	macro	val,pos
+    28                           	(((val) >> (8 * pos)) and 0xffff)
+    29                           endm
+    30  0000                     word0	macro	val
+    31                           	(getword(val,0))
+    32                           endm
+    33  0000                     word1	macro	val
+    34                           	(getword(val,2))
+    35                           endm
+    36  0000                     word2	macro	val
+    37                           	(getword(val,4))
+    38                           endm
+    39  0000                     word3	macro	val
+    40                           	(getword(val,6))
+    41                           endm
+    42  0000                     gettword	macro	val,pos
+    43                           	(((val) >> (8 * pos)) and 0xffffff)
+    44                           endm
+    45  0000                     tword0	macro	val
+    46                           	(gettword(val,0))
+    47                           endm
+    48  0000                     tword1	macro	val
+    49                           	(gettword(val,3))
+    50                           endm
+    51  0000                     tword2	macro	val
+    52                           	(gettword(val,6))
+    53                           endm
+    54  0000                     getdword	macro	val,pos
+    55                           	(((val) >> (8 * pos)) and 0xffffffff)
+    56                           endm
+    57  0000                     dword0	macro	val
+    58                           	(getdword(val,0))
+    59                           endm
+    60  0000                     dword1	macro	val
+    61                           	(getdword(val,4))
+    62                           endm
+    63  0000                     clrc	macro
+    64                           	bcf	3,0
+    65                           	endm
+    66  0000                     clrz	macro
+    67                           	bcf	3,2
+    68                           	endm
+    69  0000                     setc	macro
+    70                           	bsf	3,0
+    71                           	endm
+    72  0000                     setz	macro
+    73                           	bsf	3,2
+    74                           	endm
+    75  0000                     skipc	macro
+    76                           	btfss	3,0
+    77                           	endm
+    78  0000                     skipz	macro
+    79                           	btfss	3,2
+    80                           	endm
+    81  0000                     skipnc	macro
+    82                           	btfsc	3,0
+    83                           	endm
+    84  0000                     skipnz	macro
+    85                           	btfsc	3,2
+    86                           	endm
+    87  0000                     # 54 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+    88                           INDF equ 00h ;# 
+    89  0000                     # 61 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+    90                           TMR0 equ 01h ;# 
+    91  0001                     # 68 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+    92                           PCL equ 02h ;# 
+    93  0002                     # 75 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+    94                           STATUS equ 03h ;# 
+    95  0003                     # 161 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+    96                           FSR equ 04h ;# 
+    97  0004                     # 168 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+    98                           PORTA equ 05h ;# 
+    99  0005                     # 218 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   100                           PORTC equ 07h ;# 
+   101  0007                     # 268 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   102                           PCLATH equ 0Ah ;# 
+   103  000A                     # 288 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   104                           INTCON equ 0Bh ;# 
+   105  000B                     # 366 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   106                           PIR1 equ 0Ch ;# 
+   107  000C                     # 414 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   108                           TMR1 equ 0Eh ;# 
+   109  000E                     # 421 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   110                           TMR1L equ 0Eh ;# 
+   111  000E                     # 428 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   112                           TMR1H equ 0Fh ;# 
+   113  000F                     # 435 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   114                           T1CON equ 010h ;# 
+   115  0010                     # 500 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   116                           CMCON equ 019h ;# 
+   117  0019                     # 559 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   118                           ADRESH equ 01Eh ;# 
+   119  001E                     # 566 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   120                           ADCON0 equ 01Fh ;# 
+   121  001F                     # 656 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   122                           OPTION_REG equ 081h ;# 
+   123  0081                     # 733 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   124                           TRISA equ 085h ;# 
+   125  0085                     # 783 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   126                           TRISC equ 087h ;# 
+   127  0087                     # 833 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   128                           PIE1 equ 08Ch ;# 
+   129  008C                     # 881 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   130                           PCON equ 08Eh ;# 
+   131  008E                     # 915 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   132                           OSCCAL equ 090h ;# 
+   133  0090                     # 975 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   134                           ANSEL equ 091h ;# 
+   135  0091                     # 1037 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   136                           WPUA equ 095h ;# 
+   137  0095                     # 1042 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   138                           WPU equ 095h ;# 
+   139  0095                     # 1125 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   140                           IOCA equ 096h ;# 
+   141  0096                     # 1130 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   142                           IOC equ 096h ;# 
+   143  0096                     # 1223 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   144                           VRCON equ 099h ;# 
+   145  0099                     # 1283 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   146                           EEDAT equ 09Ah ;# 
+   147  009A                     # 1288 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   148                           EEDATA equ 09Ah ;# 
+   149  009A                     # 1321 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   150                           EEADR equ 09Bh ;# 
+   151  009B                     # 1328 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   152                           EECON1 equ 09Ch ;# 
+   153  009C                     # 1366 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   154                           EECON2 equ 09Dh ;# 
+   155  009D                     # 1373 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   156                           ADRESL equ 09Eh ;# 
+   157  009E                     # 1380 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   158                           ADCON1 equ 09Fh ;# 
+   159  009F                     # 54 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   160                           INDF equ 00h ;# 
+   161  0000                     # 61 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   162                           TMR0 equ 01h ;# 
+   163  0001                     # 68 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   164                           PCL equ 02h ;# 
+   165  0002                     # 75 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   166                           STATUS equ 03h ;# 
+   167  0003                     # 161 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   168                           FSR equ 04h ;# 
+   169  0004                     # 168 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   170                           PORTA equ 05h ;# 
+   171  0005                     # 218 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   172                           PORTC equ 07h ;# 
+   173  0007                     # 268 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   174                           PCLATH equ 0Ah ;# 
+   175  000A                     # 288 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   176                           INTCON equ 0Bh ;# 
+   177  000B                     # 366 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   178                           PIR1 equ 0Ch ;# 
+   179  000C                     # 414 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   180                           TMR1 equ 0Eh ;# 
+   181  000E                     # 421 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   182                           TMR1L equ 0Eh ;# 
+   183  000E                     # 428 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   184                           TMR1H equ 0Fh ;# 
+   185  000F                     # 435 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   186                           T1CON equ 010h ;# 
+   187  0010                     # 500 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   188                           CMCON equ 019h ;# 
+   189  0019                     # 559 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   190                           ADRESH equ 01Eh ;# 
+   191  001E                     # 566 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   192                           ADCON0 equ 01Fh ;# 
+   193  001F                     # 656 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   194                           OPTION_REG equ 081h ;# 
+   195  0081                     # 733 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   196                           TRISA equ 085h ;# 
+   197  0085                     # 783 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   198                           TRISC equ 087h ;# 
+   199  0087                     # 833 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   200                           PIE1 equ 08Ch ;# 
+   201  008C                     # 881 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   202                           PCON equ 08Eh ;# 
+   203  008E                     # 915 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   204                           OSCCAL equ 090h ;# 
+   205  0090                     # 975 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   206                           ANSEL equ 091h ;# 
+   207  0091                     # 1037 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   208                           WPUA equ 095h ;# 
+   209  0095                     # 1042 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   210                           WPU equ 095h ;# 
+   211  0095                     # 1125 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   212                           IOCA equ 096h ;# 
+   213  0096                     # 1130 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   214                           IOC equ 096h ;# 
+   215  0096                     # 1223 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   216                           VRCON equ 099h ;# 
+   217  0099                     # 1283 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   218                           EEDAT equ 09Ah ;# 
+   219  009A                     # 1288 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   220                           EEDATA equ 09Ah ;# 
+   221  009A                     # 1321 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   222                           EEADR equ 09Bh ;# 
+   223  009B                     # 1328 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   224                           EECON1 equ 09Ch ;# 
+   225  009C                     # 1366 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   226                           EECON2 equ 09Dh ;# 
+   227  009D                     # 1373 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   228                           ADRESL equ 09Eh ;# 
+   229  009E                     # 1380 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h"
+   230                           ADCON1 equ 09Fh ;# 
+   231  009F                     	FNCALL	_main,_IOinit
+   232                           	FNCALL	_main,_timer1Init
+   233                           	FNROOT	_main
+   234                           	FNCALL	intlevel1,_ISR
+   235                           	global	intlevel1
+   236                           	FNROOT	intlevel1
+   237                           	global	_i
+   238                           psect	idataBANK0,class=CODE,space=0,delta=2,noexec
+   239                           global __pidataBANK0
+   240                           __pidataBANK0:
+   241  0042                     	file	"timer1.c"
+   242                           	line	13
+   243                           
+   244                           ;initializer for _i
+   245                           	retlw	01h
+   246  0042  3401               	global	_TMR1H
+   247                           _TMR1H	set	0xF
+   248  000F                     	global	_TMR1L
+   249                           _TMR1L	set	0xE
+   250  000E                     	global	_PORTC
+   251                           _PORTC	set	0x7
+   252  0007                     	global	_PORTA
+   253                           _PORTA	set	0x5
+   254  0005                     	global	_RA0
+   255                           _RA0	set	0x28
+   256  0028                     	global	_GIE
+   257                           _GIE	set	0x5F
+   258  005F                     	global	_PEIE
+   259                           _PEIE	set	0x5E
+   260  005E                     	global	_TMR1IF
+   261                           _TMR1IF	set	0x60
+   262  0060                     	global	_TMR1ON
+   263                           _TMR1ON	set	0x80
+   264  0080                     	global	_TMR1CS
+   265                           _TMR1CS	set	0x81
+   266  0081                     	global	_T1OSCEN
+   267                           _T1OSCEN	set	0x83
+   268  0083                     	global	_T1CKPS1
+   269                           _T1CKPS1	set	0x85
+   270  0085                     	global	_T1CKPS0
+   271                           _T1CKPS0	set	0x84
+   272  0084                     	global	_TMR1GE
+   273                           _TMR1GE	set	0x86
+   274  0086                     	global	_TRISC
+   275                           _TRISC	set	0x87
+   276  0087                     	global	_TRISA
+   277                           _TRISA	set	0x85
+   278  0085                     	global	_TMR1IE
+   279                           _TMR1IE	set	0x460
+   280  0460                     ; #config settings
+   281                           global __CFG_FOSC$INTRCIO
+   282                           __CFG_FOSC$INTRCIO equ 0x0
+   283  0000                     global __CFG_WDTE$OFF
+   284                           __CFG_WDTE$OFF equ 0x0
+   285  0000                     global __CFG_PWRTE$ON
+   286                           __CFG_PWRTE$ON equ 0x0
+   287  0000                     global __CFG_MCLRE$OFF
+   288                           __CFG_MCLRE$OFF equ 0x0
+   289  0000                     global __CFG_BOREN$ON
+   290                           __CFG_BOREN$ON equ 0x0
+   291  0000                     global __CFG_CP$OFF
+   292                           __CFG_CP$OFF equ 0x0
+   293  0000                     global __CFG_CPD$OFF
+   294                           __CFG_CPD$OFF equ 0x0
+   295  0000                     	file	"C:\Users\DHARMA~1\AppData\Local\Temp\s6s0."
+   296                           	line	#
+   297                           psect cinit,class=CODE,delta=2
+   298                           global start_initialization
+   299                           start_initialization:
+   300  000C                     
+   301                           global __initialization
+   302                           __initialization:
+   303  000C                     psect	dataBANK0,class=BANK0,space=1,noexec
+   304                           global __pdataBANK0
+   305                           __pdataBANK0:
+   306  0022                     	file	"timer1.c"
+   307                           	line	13
+   308                           _i:
+   309  0022                            ds      1
+   310  0022                     
+   311                           	file	"C:\Users\DHARMA~1\AppData\Local\Temp\s6s0."
+   312                           	line	#
+   313                           ; Initialize objects allocated to BANK0
+   314                           	global __pidataBANK0
+   315                           psect cinit,class=CODE,delta=2,merge=1
+   316                           	fcall	__pidataBANK0+0		;fetch initializer
+   317  000C  2042               	movwf	__pdataBANK0+0&07fh		
+   318  000D  00A2               psect cinit,class=CODE,delta=2,merge=1
+   319                           global end_of_initialization,__end_of__initialization
+   320                           
+   321                           ;End of C runtime variable initialization code
+   322                           
+   323                           end_of_initialization:
+   324  000E                     __end_of__initialization:
+   325  000E                     clrf status
+   326  000E  0183               ljmp _main	;jump to C main() function
+   327  000F  283E               psect	cstackCOMMON,class=COMMON,space=1,noexec
+   328                           global __pcstackCOMMON
+   329                           __pcstackCOMMON:
+   330  0000                     ??_IOinit:	; 1 bytes @ 0x0
+   331  0000                     ??_timer1Init:	; 1 bytes @ 0x0
+   332  0000                     ??_main:	; 1 bytes @ 0x0
+   333  0000                     psect	cstackBANK0,class=BANK0,space=1,noexec
+   334                           global __pcstackBANK0
+   335                           __pcstackBANK0:
+   336  0020                     ?_IOinit:	; 1 bytes @ 0x0
+   337  0020                     ?_timer1Init:	; 1 bytes @ 0x0
+   338  0020                     ?_main:	; 1 bytes @ 0x0
+   339  0020                     ?_ISR:	; 1 bytes @ 0x0
+   340  0020                     ??_ISR:	; 1 bytes @ 0x0
+   341  0020                     	ds	2
+   342  0020                     ;!
+   343                           ;!Data Sizes:
+   344                           ;!    Strings     0
+   345                           ;!    Constant    0
+   346                           ;!    Data        1
+   347                           ;!    BSS         0
+   348                           ;!    Persistent  0
+   349                           ;!    Stack       0
+   350                           ;!
+   351                           ;!Auto Spaces:
+   352                           ;!    Space          Size  Autos    Used
+   353                           ;!    COMMON            0      0       0
+   354                           ;!    BANK0            62      2       3
+   355                           
+   356                           ;!
+   357                           ;!Pointer List with Targets:
+   358                           ;!
+   359                           ;!    None.
+   360                           
+   361                           
+   362                           ;!
+   363                           ;!Critical Paths under _main in COMMON
+   364                           ;!
+   365                           ;!    None.
+   366                           ;!
+   367                           ;!Critical Paths under _ISR in COMMON
+   368                           ;!
+   369                           ;!    None.
+   370                           ;!
+   371                           ;!Critical Paths under _main in BANK0
+   372                           ;!
+   373                           ;!    None.
+   374                           ;!
+   375                           ;!Critical Paths under _ISR in BANK0
+   376                           ;!
+   377                           ;!    None.
+   378                           
+   379 ;;
+   380 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   381 ;;
+   382                           
+   383                           ;!
+   384                           ;!Call Graph Tables:
+   385                           ;!
+   386                           ;! ---------------------------------------------------------------------------------
+   387                           ;! (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   388                           ;! ---------------------------------------------------------------------------------
+   389                           ;! (0) _main                                                 0     0      0       0
+   390                           ;!                             _IOinit
+   391                           ;!                         _timer1Init
+   392                           ;! ---------------------------------------------------------------------------------
+   393                           ;! (1) _timer1Init                                           0     0      0       0
+   394                           ;! ---------------------------------------------------------------------------------
+   395                           ;! (1) _IOinit                                               0     0      0       0
+   396                           ;! ---------------------------------------------------------------------------------
+   397                           ;! Estimated maximum stack depth 1
+   398                           ;! ---------------------------------------------------------------------------------
+   399                           ;! (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   400                           ;! ---------------------------------------------------------------------------------
+   401                           ;! (2) _ISR                                                  2     2      0       0
+   402                           ;!                                              0 BANK0      2     2      0
+   403                           ;! ---------------------------------------------------------------------------------
+   404                           ;! Estimated maximum stack depth 2
+   405                           ;! ---------------------------------------------------------------------------------
+   406                           ;!
+   407                           ;! Call Graph Graphs:
+   408                           ;!
+   409                           ;! _main (ROOT)
+   410                           ;!   _IOinit
+   411                           ;!   _timer1Init
+   412                           ;!
+   413                           ;! _ISR (ROOT)
+   414                           ;!
+   415                           
+   416                           ;! Address spaces:
+   417                           
+   418                           ;!Name               Size   Autos  Total    Cost      Usage
+   419                           ;!SFR1                 0      0       0       2        0.0%
+   420                           ;!BITSFR1              0      0       0       2        0.0%
+   421                           ;!BANK0               3E      2       3       4        4.8%
+   422                           ;!BITBANK0            3E      0       0       3        0.0%
+   423                           ;!SFR0                 0      0       0       1        0.0%
+   424                           ;!BITSFR0              0      0       0       1        0.0%
+   425                           ;!COMMON               0      0       0       1        0.0%
+   426                           ;!BITCOMMON            0      0       0       0        0.0%
+   427                           ;!CODE                 0      0       0       0        0.0%
+   428                           ;!DATA                 0      0       3       6        0.0%
+   429                           ;!ABS                  0      0       3       5        0.0%
+   430                           ;!NULL                 0      0       0       0        0.0%
+   431                           ;!STACK                0      0       0       2        0.0%
+   432                           ;!EEDATA              80      0       0       0        0.0%
+   433                           
+   434                           	global	_main
+   435                           
+   436 ;; *************** function _main *****************
+   437 ;; Defined at:
+   438 ;;		line 37 in file "timer1.c"
+   439 ;; Parameters:    Size  Location     Type
+   440 ;;		None
+   441 ;; Auto vars:     Size  Location     Type
+   442 ;;		None
+   443 ;; Return value:  Size  Location     Type
+   444 ;;                  1    wreg      void 
+   445 ;; Registers used:
+   446 ;;		status,2, status,0, pclath, cstack
+   447 ;; Tracked objects:
+   448 ;;		On entry : B00/0
+   449 ;;		On exit  : 0/0
+   450 ;;		Unchanged: 0/0
+   451 ;; Data sizes:     COMMON   BANK0
+   452 ;;      Params:         0       0
+   453 ;;      Locals:         0       0
+   454 ;;      Temps:          0       0
+   455 ;;      Totals:         0       0
+   456 ;;Total ram usage:        0 bytes
+   457 ;; Hardware stack levels required when called:    2
+   458 ;; This function calls:
+   459 ;;		_IOinit
+   460 ;;		_timer1Init
+   461 ;; This function is called by:
+   462 ;;		Startup code after reset
+   463 ;; This function uses a non-reentrant model
+   464 ;;
+   465                           psect	maintext,global,class=CODE,delta=2,split=1,group=0
+   466                           	file	"timer1.c"
+   467                           	line	37
+   468                           global __pmaintext
+   469                           __pmaintext:	;psect for function _main
+   470  003E                     psect	maintext
+   471                           	file	"timer1.c"
+   472                           	line	37
+   473                           	global	__size_of_main
+   474                           	__size_of_main	equ	__end_of_main-_main
+   475  0004                     	
+   476                           _main:	
+   477  003E                     ;incstack = 0
+   478                           	opt	stack 6
+   479                           ; Regs used in _main: [status,2+status,0+pclath+cstack]
+   480                           	line	38
+   481                           	
+   482                           l667:	
+   483  003E                     ;timer1.c: 38:     IOinit();
+   484                           	fcall	_IOinit
+   485  003E  2037               	line	39
+   486                           ;timer1.c: 39:     timer1Init();
+   487                           	fcall	_timer1Init
+   488  003F  2028               	line	40
+   489                           ;timer1.c: 40:     while(1);
+   490                           	
+   491                           l47:	
+   492  0040                     	
+   493                           l48:	
+   494  0040                     	goto	l47
+   495  0040  2840               	
+   496                           l49:	
+   497  0041                     	line	42
+   498                           ;timer1.c: 41:     return;
+   499                           	
+   500                           l50:	
+   501  0041                     	global	start
+   502                           	ljmp	start
+   503  0041  280B               	opt stack 0
+   504                           GLOBAL	__end_of_main
+   505                           	__end_of_main:
+   506  0042                     	signat	_main,89
+   507                           	global	_timer1Init
+   508                           
+   509 ;; *************** function _timer1Init *****************
+   510 ;; Defined at:
+   511 ;;		line 22 in file "timer1.c"
+   512 ;; Parameters:    Size  Location     Type
+   513 ;;		None
+   514 ;; Auto vars:     Size  Location     Type
+   515 ;;		None
+   516 ;; Return value:  Size  Location     Type
+   517 ;;                  1    wreg      void 
+   518 ;; Registers used:
+   519 ;;		status,2
+   520 ;; Tracked objects:
+   521 ;;		On entry : 0/0
+   522 ;;		On exit  : 0/0
+   523 ;;		Unchanged: 0/0
+   524 ;; Data sizes:     COMMON   BANK0
+   525 ;;      Params:         0       0
+   526 ;;      Locals:         0       0
+   527 ;;      Temps:          0       0
+   528 ;;      Totals:         0       0
+   529 ;;Total ram usage:        0 bytes
+   530 ;; Hardware stack levels used:    1
+   531 ;; Hardware stack levels required when called:    1
+   532 ;; This function calls:
+   533 ;;		Nothing
+   534 ;; This function is called by:
+   535 ;;		_main
+   536 ;; This function uses a non-reentrant model
+   537 ;;
+   538                           psect	text1,local,class=CODE,delta=2,merge=1,group=0
+   539                           	line	22
+   540                           global __ptext1
+   541                           __ptext1:	;psect for function _timer1Init
+   542  0028                     psect	text1
+   543                           	file	"timer1.c"
+   544                           	line	22
+   545                           	global	__size_of_timer1Init
+   546                           	__size_of_timer1Init	equ	__end_of_timer1Init-_timer1Init
+   547  000F                     	
+   548                           _timer1Init:	
+   549  0028                     ;incstack = 0
+   550                           	opt	stack 6
+   551                           ; Regs used in _timer1Init: [status,2]
+   552                           	line	23
+   553                           	
+   554                           l655:	
+   555  0028                     ;timer1.c: 23:     TMR1GE = 0;
+   556                           	bcf	status, 5	;RP0=0, select bank0
+   557  0028  1283               	bcf	(134/8),(134)&7	;volatile
+   558  0029  1310               	line	24
+   559                           ;timer1.c: 24:     T1CKPS0 = 1;
+   560                           	bsf	(132/8),(132)&7	;volatile
+   561  002A  1610               	line	25
+   562                           ;timer1.c: 25:     T1CKPS1 = 1;
+   563                           	bsf	(133/8),(133)&7	;volatile
+   564  002B  1690               	line	26
+   565                           ;timer1.c: 26:     T1OSCEN = 0;
+   566                           	bcf	(131/8),(131)&7	;volatile
+   567  002C  1190               	line	27
+   568                           ;timer1.c: 27:     TMR1CS = 0;
+   569                           	bcf	(129/8),(129)&7	;volatile
+   570  002D  1090               	line	28
+   571                           ;timer1.c: 28:     TMR1ON = 1;
+   572                           	bsf	(128/8),(128)&7	;volatile
+   573  002E  1410               	line	29
+   574                           	
+   575                           l657:	
+   576  002F                     ;timer1.c: 29:     TMR1L = 0;
+   577                           	clrf	(14)	;volatile
+   578  002F  018E               	line	30
+   579                           ;timer1.c: 30:     TMR1H = 0;
+   580                           	clrf	(15)	;volatile
+   581  0030  018F               	line	31
+   582                           	
+   583                           l659:	
+   584  0031                     ;timer1.c: 31:     TMR1IF = 0;
+   585                           	bcf	(96/8),(96)&7	;volatile
+   586  0031  100C               	line	32
+   587                           	
+   588                           l661:	
+   589  0032                     ;timer1.c: 32:     TMR1IE = 1;
+   590                           	bsf	status, 5	;RP0=1, select bank1
+   591  0032  1683               	bsf	(1120/8)^080h,(1120)&7	;volatile
+   592  0033  140C               	line	33
+   593                           	
+   594                           l663:	
+   595  0034                     ;timer1.c: 33:     PEIE = 1;
+   596                           	bsf	(94/8),(94)&7	;volatile
+   597  0034  170B               	line	34
+   598                           	
+   599                           l665:	
+   600  0035                     ;timer1.c: 34:     GIE = 1;
+   601                           	bsf	(95/8),(95)&7	;volatile
+   602  0035  178B               	line	35
+   603                           	
+   604                           l42:	
+   605  0036                     	return
+   606  0036  0008               	opt stack 0
+   607                           GLOBAL	__end_of_timer1Init
+   608                           	__end_of_timer1Init:
+   609  0037                     	signat	_timer1Init,89
+   610                           	global	_IOinit
+   611                           
+   612 ;; *************** function _IOinit *****************
+   613 ;; Defined at:
+   614 ;;		line 15 in file "timer1.c"
+   615 ;; Parameters:    Size  Location     Type
+   616 ;;		None
+   617 ;; Auto vars:     Size  Location     Type
+   618 ;;		None
+   619 ;; Return value:  Size  Location     Type
+   620 ;;                  1    wreg      void 
+   621 ;; Registers used:
+   622 ;;		status,2
+   623 ;; Tracked objects:
+   624 ;;		On entry : 0/0
+   625 ;;		On exit  : 0/0
+   626 ;;		Unchanged: 0/0
+   627 ;; Data sizes:     COMMON   BANK0
+   628 ;;      Params:         0       0
+   629 ;;      Locals:         0       0
+   630 ;;      Temps:          0       0
+   631 ;;      Totals:         0       0
+   632 ;;Total ram usage:        0 bytes
+   633 ;; Hardware stack levels used:    1
+   634 ;; Hardware stack levels required when called:    1
+   635 ;; This function calls:
+   636 ;;		Nothing
+   637 ;; This function is called by:
+   638 ;;		_main
+   639 ;; This function uses a non-reentrant model
+   640 ;;
+   641                           psect	text2,local,class=CODE,delta=2,merge=1,group=0
+   642                           	line	15
+   643                           global __ptext2
+   644                           __ptext2:	;psect for function _IOinit
+   645  0037                     psect	text2
+   646                           	file	"timer1.c"
+   647                           	line	15
+   648                           	global	__size_of_IOinit
+   649                           	__size_of_IOinit	equ	__end_of_IOinit-_IOinit
+   650  0007                     	
+   651                           _IOinit:	
+   652  0037                     ;incstack = 0
+   653                           	opt	stack 6
+   654                           ; Regs used in _IOinit: [status,2]
+   655                           	line	16
+   656                           	
+   657                           l653:	
+   658  0037                     ;timer1.c: 16:     TRISA = 0;
+   659                           	bsf	status, 5	;RP0=1, select bank1
+   660  0037  1683               	clrf	(133)^080h	;volatile
+   661  0038  0185               	line	17
+   662                           ;timer1.c: 17:     TRISC = 0;
+   663                           	clrf	(135)^080h	;volatile
+   664  0039  0187               	line	18
+   665                           ;timer1.c: 18:     PORTA = 0;
+   666                           	bcf	status, 5	;RP0=0, select bank0
+   667  003A  1283               	clrf	(5)	;volatile
+   668  003B  0185               	line	19
+   669                           ;timer1.c: 19:     PORTC = 0;
+   670                           	clrf	(7)	;volatile
+   671  003C  0187               	line	20
+   672                           	
+   673                           l39:	
+   674  003D                     	return
+   675  003D  0008               	opt stack 0
+   676                           GLOBAL	__end_of_IOinit
+   677                           	__end_of_IOinit:
+   678  003E                     	signat	_IOinit,89
+   679                           	global	_ISR
+   680                           
+   681 ;; *************** function _ISR *****************
+   682 ;; Defined at:
+   683 ;;		line 44 in file "timer1.c"
+   684 ;; Parameters:    Size  Location     Type
+   685 ;;		None
+   686 ;; Auto vars:     Size  Location     Type
+   687 ;;		None
+   688 ;; Return value:  Size  Location     Type
+   689 ;;                  1    wreg      void 
+   690 ;; Registers used:
+   691 ;;		status,2
+   692 ;; Tracked objects:
+   693 ;;		On entry : 0/0
+   694 ;;		On exit  : 0/0
+   695 ;;		Unchanged: 0/0
+   696 ;; Data sizes:     COMMON   BANK0
+   697 ;;      Params:         0       0
+   698 ;;      Locals:         0       0
+   699 ;;      Temps:          0       2
+   700 ;;      Totals:         0       2
+   701 ;;Total ram usage:        2 bytes
+   702 ;; Hardware stack levels used:    1
+   703 ;; This function calls:
+   704 ;;		Nothing
+   705 ;; This function is called by:
+   706 ;;		Interrupt level 1
+   707 ;; This function uses a non-reentrant model
+   708 ;;
+   709                           psect	text3,local,class=CODE,delta=2,merge=1,group=0
+   710                           	line	44
+   711                           global __ptext3
+   712                           __ptext3:	;psect for function _ISR
+   713  0010                     psect	text3
+   714                           	file	"timer1.c"
+   715                           	line	44
+   716                           	global	__size_of_ISR
+   717                           	__size_of_ISR	equ	__end_of_ISR-_ISR
+   718  0018                     	
+   719                           _ISR:	
+   720  0010                     ;incstack = 0
+   721                           	opt	stack 6
+   722                           ; Regs used in _ISR: [status,2]
+   723                           psect	intentry,class=CODE,delta=2
+   724                           global __pintentry
+   725                           __pintentry:
+   726  0004                     global interrupt_function
+   727                           interrupt_function:
+   728  0004                     	global saved_w
+   729                           	saved_w	set	btemp+0
+   730  005E                     	movwf	saved_w
+   731  0004  00DE               	swapf	status,w
+   732  0005  0E03               	bcf	status, 5	;RP0=0, select bank0
+   733  0006  1283               	movwf	(??_ISR+0)
+   734  0007  00A0               	movf	pclath,w
+   735  0008  080A               	movwf	(??_ISR+1)
+   736  0009  00A1               	ljmp	_ISR
+   737  000A  2810               psect	text3
+   738                           	line	45
+   739                           	
+   740                           i1l669:	
+   741  0010                     ;timer1.c: 45:     if(TMR1IF){
+   742                           	btfss	(96/8),(96)&7	;volatile
+   743  0010  1C0C               	goto	u4_21
+   744  0011  2813               	goto	u4_20
+   745  0012  2814               u4_21:
+   746  0013                     	goto	i1l56
+   747  0013  2821               u4_20:
+   748  0014                     	line	46
+   749                           	
+   750                           i1l671:	
+   751  0014                     ;timer1.c: 46:         RA0 = i;
+   752                           	btfsc	(_i),0
+   753  0014  1822               	goto	u5_21
+   754  0015  2817               	goto	u5_20
+   755  0016  281A               	
+   756                           u5_21:
+   757  0017                     	bcf	status, 5	;RP0=0, select bank0
+   758  0017  1283               	bsf	(40/8),(40)&7	;volatile
+   759  0018  1405               	goto	u6_24
+   760  0019  281C               u5_20:
+   761  001A                     	bcf	status, 5	;RP0=0, select bank0
+   762  001A  1283               	bcf	(40/8),(40)&7	;volatile
+   763  001B  1005               u6_24:
+   764  001C                     	line	47
+   765                           ;timer1.c: 47:         i = ~i;
+   766                           	comf	(_i),f
+   767  001C  09A2               	line	48
+   768                           	
+   769                           i1l673:	
+   770  001D                     ;timer1.c: 48:         TMR1L = 0;
+   771                           	clrf	(14)	;volatile
+   772  001D  018E               	line	49
+   773                           ;timer1.c: 49:         TMR1H = 0;
+   774                           	clrf	(15)	;volatile
+   775  001E  018F               	line	50
+   776                           	
+   777                           i1l675:	
+   778  001F                     ;timer1.c: 50:         TMR1IF = 0;
+   779                           	bcf	(96/8),(96)&7	;volatile
+   780  001F  100C               	goto	i1l56
+   781  0020  2821               	line	51
+   782                           ;timer1.c: 51:     }
+   783                           	
+   784                           i1l55:	
+   785  0021                     	line	52
+   786                           	
+   787                           i1l56:	
+   788  0021                     	movf	(??_ISR+1),w
+   789  0021  0821               	movwf	pclath
+   790  0022  008A               	swapf	(??_ISR+0)^00h,w
+   791  0023  0E20               	movwf	status
+   792  0024  0083               	swapf	saved_w,f
+   793  0025  0EDE               	swapf	saved_w,w
+   794  0026  0E5E               	retfie
+   795  0027  0009               	opt stack 0
+   796                           GLOBAL	__end_of_ISR
+   797                           	__end_of_ISR:
+   798  0028                     	signat	_ISR,89
+   799                           global	___latbits
+   800                           ___latbits	equ	0
+   801  0000                     	global	btemp
+   802                           	btemp set 05Eh
+   803  005E                     
+   804                           	DABS	1,94,2	;btemp
+   805                           	global	wtemp0
+   806                           	wtemp0 set btemp+0
+   807  005E                     	end
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        1
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON            0      0       0
+    BANK0            62      2       3
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _ISR in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _ISR in BANK0
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0       0
+                             _IOinit
+                         _timer1Init
+ ---------------------------------------------------------------------------------
+ (1) _timer1Init                                           0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _IOinit                                               0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (2) _ISR                                                  2     2      0       0
+                                              0 BANK0      2     2      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _IOinit
+   _timer1Init
+
+ _ISR (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+SFR1                 0      0       0       2        0.0%
+BITSFR1              0      0       0       2        0.0%
+BANK0               3E      2       3       4        4.8%
+BITBANK0            3E      0       0       3        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+COMMON               0      0       0       1        0.0%
+BITCOMMON            0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+DATA                 0      0       3       6        0.0%
+ABS                  0      0       3       5        0.0%
+NULL                 0      0       0       0        0.0%
+STACK                0      0       0       2        0.0%
+EEDATA              80      0       0       0        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.00 build -1524193055 
+Symbol Table                                                                                   Fri Jul 05 17:26:02 2019
+
+                      _i 0022              __CFG_CP$OFF 0000                       l42 0036  
+                     l50 0041                       l39 003D                       l47 0040  
+                     l48 0040                       l49 0041                      l653 0037  
+                    l661 0032                      l663 0034                      l655 0028  
+                    l665 0035                      l657 002F                      l659 0031  
+                    l667 003E                      _GIE 005F                      _RA0 0028  
+           __CFG_CPD$OFF 0000                      _ISR 0010                     ?_ISR 0020  
+                   _PEIE 005E                     i1l55 0021                     i1l56 0021  
+                   u4_20 0014                     u4_21 0013                     u5_20 001A  
+                   u5_21 0017                     u6_24 001C                     _main 003E  
+                   btemp 005E            __CFG_BOREN$ON 0000                     start 000B  
+                  ??_ISR 0020                    ?_main 0020            __CFG_WDTE$OFF 0000  
+                  i1l671 0014                    i1l673 001D                    i1l675 001F  
+                  i1l669 0010                    _TMR1H 000F                    _TMR1L 000E  
+                  _PORTA 0005                    _PORTC 0007                    _TRISA 0085  
+                  _TRISC 0087            __CFG_PWRTE$ON 0000                    pclath 000A  
+                  status 0003                    wtemp0 005E           __CFG_MCLRE$OFF 0000  
+        __initialization 000C             __end_of_main 0042                   ??_main 0000  
+                 _TMR1GE 0086                   _TMR1IE 0460                   _TMR1IF 0060  
+                 _TMR1CS 0081                   _TMR1ON 0080                   _IOinit 0037  
+                 saved_w 005E  __end_of__initialization 000E           __pcstackCOMMON 0000  
+           __pidataBANK0 0042                  ?_IOinit 0020               __pmaintext 003E  
+             __pintentry 0004                  _T1CKPS0 0084                  _T1CKPS1 0085  
+                _T1OSCEN 0083          __size_of_IOinit 0007                  __ptext1 0028  
+                __ptext2 0037                  __ptext3 0010             __size_of_ISR 0018  
+   end_of_initialization 000E               _timer1Init 0028           __end_of_IOinit 003E  
+    start_initialization 000C              __end_of_ISR 0028                 ??_IOinit 0000  
+            ?_timer1Init 0020              __pdataBANK0 0022                ___latbits 0000  
+          __pcstackBANK0 0020      __size_of_timer1Init 000F        interrupt_function 0004  
+          __size_of_main 0004             ??_timer1Init 0000       __end_of_timer1Init 0037  
+               intlevel1 0000        __CFG_FOSC$INTRCIO 0000  
