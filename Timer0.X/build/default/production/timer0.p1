@@ -1,0 +1,302 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"731 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 731: extern volatile unsigned char TRISA __attribute__((address(0x085)));
+[v _TRISA `Vuc ~T0 @X0 0 e@133 ]
+"781
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 781: extern volatile unsigned char TRISC __attribute__((address(0x087)));
+[v _TRISC `Vuc ~T0 @X0 0 e@135 ]
+"166
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
+[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
+"216
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 216: extern volatile unsigned char PORTC __attribute__((address(0x007)));
+[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
+"1642
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1642: extern volatile __bit T0CS __attribute__((address(0x40D)));
+[v _T0CS `Vb ~T0 @X0 0 e@1037 ]
+"1651
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1651: extern volatile __bit T0SE __attribute__((address(0x40C)));
+[v _T0SE `Vb ~T0 @X0 0 e@1036 ]
+"1588
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1588: extern volatile __bit PSA __attribute__((address(0x40B)));
+[v _PSA `Vb ~T0 @X0 0 e@1035 ]
+"1579
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1579: extern volatile __bit PS0 __attribute__((address(0x408)));
+[v _PS0 `Vb ~T0 @X0 0 e@1032 ]
+"1582
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1582: extern volatile __bit PS1 __attribute__((address(0x409)));
+[v _PS1 `Vb ~T0 @X0 0 e@1033 ]
+"1585
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1585: extern volatile __bit PS2 __attribute__((address(0x40A)));
+[v _PS2 `Vb ~T0 @X0 0 e@1034 ]
+"59
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 59: extern volatile unsigned char TMR0 __attribute__((address(0x001)));
+[v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
+"1648
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1648: extern volatile __bit T0IF __attribute__((address(0x5A)));
+[v _T0IF `Vb ~T0 @X0 0 e@90 ]
+"1645
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1645: extern volatile __bit T0IE __attribute__((address(0x5D)));
+[v _T0IE `Vb ~T0 @X0 0 e@93 ]
+"1576
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1576: extern volatile __bit PEIE __attribute__((address(0x5E)));
+[v _PEIE `Vb ~T0 @X0 0 e@94 ]
+"1534
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1534: extern volatile __bit GIE __attribute__((address(0x5F)));
+[v _GIE `Vb ~T0 @X0 0 e@95 ]
+[p mainexit ]
+[t ~ __interrupt . k ]
+[t T1 __interrupt ]
+"1591
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1591: extern volatile __bit RA0 __attribute__((address(0x28)));
+[v _RA0 `Vb ~T0 @X0 0 e@40 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 54: __asm("INDF equ 00h");
+[; <" INDF equ 00h ;# ">
+"61
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 61: __asm("TMR0 equ 01h");
+[; <" TMR0 equ 01h ;# ">
+"68
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 68: __asm("PCL equ 02h");
+[; <" PCL equ 02h ;# ">
+"75
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 75: __asm("STATUS equ 03h");
+[; <" STATUS equ 03h ;# ">
+"161
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 161: __asm("FSR equ 04h");
+[; <" FSR equ 04h ;# ">
+"168
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 168: __asm("PORTA equ 05h");
+[; <" PORTA equ 05h ;# ">
+"218
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 218: __asm("PORTC equ 07h");
+[; <" PORTC equ 07h ;# ">
+"268
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 268: __asm("PCLATH equ 0Ah");
+[; <" PCLATH equ 0Ah ;# ">
+"288
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 288: __asm("INTCON equ 0Bh");
+[; <" INTCON equ 0Bh ;# ">
+"366
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 366: __asm("PIR1 equ 0Ch");
+[; <" PIR1 equ 0Ch ;# ">
+"414
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 414: __asm("TMR1 equ 0Eh");
+[; <" TMR1 equ 0Eh ;# ">
+"421
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 421: __asm("TMR1L equ 0Eh");
+[; <" TMR1L equ 0Eh ;# ">
+"428
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 428: __asm("TMR1H equ 0Fh");
+[; <" TMR1H equ 0Fh ;# ">
+"435
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 435: __asm("T1CON equ 010h");
+[; <" T1CON equ 010h ;# ">
+"500
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 500: __asm("CMCON equ 019h");
+[; <" CMCON equ 019h ;# ">
+"559
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 559: __asm("ADRESH equ 01Eh");
+[; <" ADRESH equ 01Eh ;# ">
+"566
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 566: __asm("ADCON0 equ 01Fh");
+[; <" ADCON0 equ 01Fh ;# ">
+"656
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 656: __asm("OPTION_REG equ 081h");
+[; <" OPTION_REG equ 081h ;# ">
+"733
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 733: __asm("TRISA equ 085h");
+[; <" TRISA equ 085h ;# ">
+"783
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 783: __asm("TRISC equ 087h");
+[; <" TRISC equ 087h ;# ">
+"833
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 833: __asm("PIE1 equ 08Ch");
+[; <" PIE1 equ 08Ch ;# ">
+"881
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 881: __asm("PCON equ 08Eh");
+[; <" PCON equ 08Eh ;# ">
+"915
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 915: __asm("OSCCAL equ 090h");
+[; <" OSCCAL equ 090h ;# ">
+"975
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 975: __asm("ANSEL equ 091h");
+[; <" ANSEL equ 091h ;# ">
+"1037
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1037: __asm("WPUA equ 095h");
+[; <" WPUA equ 095h ;# ">
+"1042
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1042: __asm("WPU equ 095h");
+[; <" WPU equ 095h ;# ">
+"1125
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1125: __asm("IOCA equ 096h");
+[; <" IOCA equ 096h ;# ">
+"1130
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1130: __asm("IOC equ 096h");
+[; <" IOC equ 096h ;# ">
+"1223
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1223: __asm("VRCON equ 099h");
+[; <" VRCON equ 099h ;# ">
+"1283
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1283: __asm("EEDAT equ 09Ah");
+[; <" EEDAT equ 09Ah ;# ">
+"1288
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1288: __asm("EEDATA equ 09Ah");
+[; <" EEDATA equ 09Ah ;# ">
+"1321
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1321: __asm("EEADR equ 09Bh");
+[; <" EEADR equ 09Bh ;# ">
+"1328
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1328: __asm("EECON1 equ 09Ch");
+[; <" EECON1 equ 09Ch ;# ">
+"1366
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1366: __asm("EECON2 equ 09Dh");
+[; <" EECON2 equ 09Dh ;# ">
+"1373
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1373: __asm("ADRESL equ 09Eh");
+[; <" ADRESL equ 09Eh ;# ">
+"1380
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f676.h: 1380: __asm("ADCON1 equ 09Fh");
+[; <" ADCON1 equ 09Fh ;# ">
+"12 ./config.h
+[p x FOSC = INTRCIO ]
+"13
+[p x WDTE = OFF ]
+"14
+[p x PWRTE = ON ]
+"15
+[p x MCLRE = OFF ]
+"16
+[p x BOREN = ON ]
+"17
+[p x CP = OFF ]
+"18
+[p x CPD = OFF ]
+"14 timer0.c
+[; ;timer0.c: 14: uint8_t i = 1;
+[v _i `uc ~T0 @X0 1 e ]
+[i _i
+-> -> 1 `i `uc
+]
+"16
+[; ;timer0.c: 16: void IOinit(){
+[v _IOinit `(v ~T0 @X0 1 ef ]
+{
+[e :U _IOinit ]
+[f ]
+"17
+[; ;timer0.c: 17:     TRISA = 0;
+[e = _TRISA -> -> 0 `i `uc ]
+"18
+[; ;timer0.c: 18:     TRISC = 0;
+[e = _TRISC -> -> 0 `i `uc ]
+"19
+[; ;timer0.c: 19:     PORTA = 0;
+[e = _PORTA -> -> 0 `i `uc ]
+"20
+[; ;timer0.c: 20:     PORTC = 0;
+[e = _PORTC -> -> 0 `i `uc ]
+"21
+[; ;timer0.c: 21: }
+[e :UE 66 ]
+}
+"23
+[; ;timer0.c: 23: void timer0Init(){
+[v _timer0Init `(v ~T0 @X0 1 ef ]
+{
+[e :U _timer0Init ]
+[f ]
+"24
+[; ;timer0.c: 24:     T0CS = 0;
+[e = _T0CS -> -> 0 `i `b ]
+"25
+[; ;timer0.c: 25:     T0SE = 0;
+[e = _T0SE -> -> 0 `i `b ]
+"26
+[; ;timer0.c: 26:     PSA = 0;
+[e = _PSA -> -> 0 `i `b ]
+"27
+[; ;timer0.c: 27:     PS0 = 1;
+[e = _PS0 -> -> 1 `i `b ]
+"28
+[; ;timer0.c: 28:     PS1 = 1;
+[e = _PS1 -> -> 1 `i `b ]
+"29
+[; ;timer0.c: 29:     PS2 = 1;
+[e = _PS2 -> -> 1 `i `b ]
+"30
+[; ;timer0.c: 30:     TMR0 = 0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"31
+[; ;timer0.c: 31:     T0IF = 0;
+[e = _T0IF -> -> 0 `i `b ]
+"32
+[; ;timer0.c: 32:     T0IE = 1;
+[e = _T0IE -> -> 1 `i `b ]
+"33
+[; ;timer0.c: 33:     PEIE = 1;
+[e = _PEIE -> -> 1 `i `b ]
+"34
+[; ;timer0.c: 34:     GIE = 1;
+[e = _GIE -> -> 1 `i `b ]
+"35
+[; ;timer0.c: 35: }
+[e :UE 67 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"37
+[; ;timer0.c: 37: void main(void) {
+[v _main `(v ~T0 @X0 1 ef ]
+{
+[e :U _main ]
+[f ]
+"38
+[; ;timer0.c: 38:     IOinit();
+[e ( _IOinit ..  ]
+"39
+[; ;timer0.c: 39:     timer0Init();
+[e ( _timer0Init ..  ]
+"40
+[; ;timer0.c: 40:     while(1);
+[e :U 70 ]
+[e :U 69 ]
+[e $U 70  ]
+[e :U 71 ]
+"41
+[; ;timer0.c: 41:     return;
+[e $UE 68  ]
+"42
+[; ;timer0.c: 42: }
+[e :UE 68 ]
+}
+[v $root$_ISR `(v ~T0 @X0 0 e ]
+"44
+[; ;timer0.c: 44: void __attribute__((picinterrupt(""))) ISR(){
+[v _ISR `(v ~T1 @X0 1 ef ]
+{
+[e :U _ISR ]
+[f ]
+"45
+[; ;timer0.c: 45:     if(T0IF){
+[e $ ! _T0IF 73  ]
+{
+"46
+[; ;timer0.c: 46:         RA0 = i;
+[e = _RA0 -> _i `b ]
+"47
+[; ;timer0.c: 47:         i = ~i;
+[e = _i -> ~ -> _i `i `uc ]
+"48
+[; ;timer0.c: 48:         TMR0 = 0;
+[e = _TMR0 -> -> 0 `i `uc ]
+"49
+[; ;timer0.c: 49:         T0IF = 0;
+[e = _T0IF -> -> 0 `i `b ]
+"50
+[; ;timer0.c: 50:     }
+}
+[e :U 73 ]
+"51
+[; ;timer0.c: 51: }
+[e :UE 72 ]
+}

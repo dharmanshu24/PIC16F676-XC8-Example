@@ -15,8 +15,8 @@
 void IOinit(){
     TRISA = 0; // Port A is Digital Output
     TRISC = 0; // Port C is Digital Output
-    PORTA = 0;
-    PORTC = 0;
+    PORTA = 0; // Clear PORTA
+    PORTC = 0; // Clear PORTC
 }
 
 void main(void) {
